@@ -193,7 +193,7 @@ shots_model = shots_model.assign(AX=AX)
 
 # A general model for fitting goal probability
 # List the model variables you want here
-model_variables = ['Angle','Distance']
+model_variables = ['Angle','Distance','X','C']
 model=''
 for v in model_variables[:-1]:
     model = model  + v + ' + '
@@ -234,7 +234,8 @@ for x in range(65):
         sh['X'] = x
         sh['AX'] = x*a
         sh['X2'] = x**2
-        sh['C'] = (y-65/2)
+        sh['C'] = abs(y-65/2)
+        sh['C2'] = (y-65/2)**2
         
         pgoal_2d[x,y] =  calculate_xG(sh)
 
