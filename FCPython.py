@@ -209,7 +209,7 @@ def createGoalMouth():
     fig=plt.figure()
     ax=fig.add_subplot(1,1,1)
 
-    linecolor=black
+    linecolor='black'
 
     #Pitch Outline & Centre Line
     plt.plot([0,65],[0,0], color=linecolor)
@@ -225,6 +225,11 @@ def createGoalMouth():
     plt.plot([41.5,41.5],[5.5,0],color=linecolor)
     plt.plot([23.5,41.5],[5.5,5.5],color=linecolor)
     plt.plot([23.5,23.5],[0,5.5],color=linecolor)
+    
+    #Goal
+    plt.plot([41.5-5.34,41.5-5.34],[-2,0],color=linecolor)
+    plt.plot([23.5+5.34,41.5-5.34],[-2,-2],color=linecolor)
+    plt.plot([23.5+5.34,23.5+5.34],[0,-2],color=linecolor)
     
     #Prepare Circles
     leftPenSpot = plt.Circle((65/2,11),0.8,color=linecolor)
