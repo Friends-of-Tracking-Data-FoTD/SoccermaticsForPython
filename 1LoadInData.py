@@ -35,8 +35,8 @@ for match in matches:
     print(describe_text + result_text)
 
 #Now lets find a match we are interested in
-home_team_required ="England"
-away_team_required ="Sweden"
+home_team_required ="England Women's"
+away_team_required ="Sweden Women's"
 
 #Find ID for the match
 for match in matches:
