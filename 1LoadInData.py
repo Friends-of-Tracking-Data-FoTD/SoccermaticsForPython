@@ -10,10 +10,6 @@ with open('Statsbomb/data/competitions.json') as f:
 #Womens World Cup 2019 has competition ID 72
 competition_id=72
 
-#Womens World Cup 2019 has competition ID 72
-competition_id=72
-
-
 #Load the list of matches for this competition
 with open('Statsbomb/data/matches/'+str(competition_id)+'/30.json') as f:
     matches = json.load(f)

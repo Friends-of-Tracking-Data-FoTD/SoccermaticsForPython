@@ -5,13 +5,18 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from pandas.io.json import json_normalize
-    
+from FCPython import createPitch
+
 #Size of the pitch in yards (!!!)
 pitchLengthX=120
 pitchWidthY=80
 
 #The team we are interested in
-team_required ="United States Women's"
+#team_required ="United States Women's"
+team_required ="England Women's"
+team_required ="Sweden Women's"
+team_required ="Germany Women's"
+
 
 #Find the matches they played
 match_id_required=[]
@@ -39,9 +44,13 @@ for i,match_id in enumerate(match_id_required):
     #get the nested structure into a dataframe 
     #store the dataframe in a dictionary with the match id as key (remove '.json' from string)
     df = json_normalize(data, sep = "_").assign(match_id = file_name[:-5])
+    team_passes = (df['team_name']==team_required)
+    df = df[team_passes]
     
     #A dataframe of shots
     passes_match = df.loc[df['type_name'] == 'Pass'].set_index('id')
+    
+    
     if i==0:
         passes = passes_match
     else:
@@ -67,7 +76,7 @@ for i,thepass in passes.iterrows():
     ax.add_patch(passCircle)
     #dx=thepass['pass_end_location'][0]-x
     #dy=thepass['pass_end_location'][1]-y
-    #passArrow=plt.Arrow(x,y,dx,dy,width=3,color="blue")
+    #passArrow=plt.Arrow(x,y,dx,dy,width=1,color="blue")
     #ax.add_patch(passArrow)
 
 
