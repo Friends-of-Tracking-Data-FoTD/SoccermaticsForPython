@@ -45,7 +45,7 @@ for i,shot in shots.iterrows():
     team_name=shot['team_name']
     
     circleSize=2
-    #circleSize=np.sqrt(shot['shot_statsbomb_xg']*15)
+    #circleSize=np.sqrt(shot['shot_statsbomb_xg'])*12
 
     if (team_name==home_team_required):
         if goal:
