@@ -166,7 +166,9 @@ for team in teams:
     plt.ylim((83,-3))
     plt.tight_layout()
     plt.gca().set_aspect('equal', adjustable='box')
+    fig.colorbar(pos, ax=ax)
     plt.show()
+    
     fig.savefig('Output/PassHeat' + team+ '.pdf', dpi=None, bbox_inches="tight") 
 
 #
