@@ -4,6 +4,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from pandas.io.json import json_normalize
 from FCPython import createPitch
 import json
@@ -109,6 +110,8 @@ import statsmodels.formula.api as smf
 passshot_df['Shots']= pd.to_numeric(passshot_df['Shots']) 
 passshot_df['Passes']= pd.to_numeric(passshot_df['Passes']) 
 passshot_df['Goals']= pd.to_numeric(passshot_df['Goals']) 
+
+#Fit the model
 model_fit=smf.ols(formula='Shots ~ Passes', data=passshot_df[['Shots','Passes']]).fit()
 print(model_fit.summary())        
 b=model_fit.params
@@ -126,10 +129,11 @@ fig.savefig('Output/ShotsPassesWithFit.pdf', dpi=None, bbox_inches="tight")
 
 
 #For goals (and strictly speaking even for shots) it is better to do a Poisson regression
-poisson_model = smf.glm(formula="Goals ~ Passes", data=passshot_df, 
+poisson_model = smf.glm(formula="Goals ~ Passes + Team", data=passshot_df, 
                     family=sm.families.Poisson()).fit()
 poisson_model.summary()
 b=poisson_model.params
+
 
 
 #Make comparative pass maps

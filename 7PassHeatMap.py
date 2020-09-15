@@ -49,6 +49,7 @@ for ic,match_id in enumerate(match_id_required):
     shots_match = df.loc[df['type_name'] == 'Shot'].set_index('id')
     
     #Find shot times in seconds
+    #This should be adjusted to account for overlapping halves of the match.
     shot_times = shots_match['minute']*60+shots_match['second']
     shot_window = 15  
     shot_start = shot_times - shot_window
@@ -97,6 +98,7 @@ fig.set_size_inches(10, 7)
 fig.savefig('Output/PassesBy' + team_required + '.pdf', dpi=100) 
 plt.show()
 
+#Make x,y positions
 x=[]
 y=[]
 for i,apass in passes.iterrows():
@@ -104,7 +106,7 @@ for i,apass in passes.iterrows():
     y.append(pitchWidthY-apass['location'][1])
 
 #Make a histogram of passes
-H_Pass=np.histogram2d(y, x,bins=10,range=[[0, pitchWidthY],[0, pitchLengthX]])
+H_Pass=np.histogram2d(y, x,bins=5,range=[[0, pitchWidthY],[0, pitchLengthX]])
 
 from FCPython import createPitch
 (fig,ax) = createPitch(pitchLengthX,pitchWidthY,'yards','gray')
