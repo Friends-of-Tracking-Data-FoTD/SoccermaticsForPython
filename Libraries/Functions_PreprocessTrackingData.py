@@ -276,14 +276,13 @@ def PlotSituation(players_pos,ball_pos,team_index,start_frame,
         if players_pos[i][0]>0:
             #print(players_speed[i][1])
             if team_index[i]==2:
-                plt.scatter(players_pos[i][0]*105,players_pos[i][1]*68,s=70,c=home_c,edgecolors='k',zorder=2)
-                plt.annotate(int(players_jersey[i]),(players_pos[i][0]*105+1,players_pos[i][1]*68-1),size='x-large',weight='bold')
+                plt.scatter(players_pos[i][0],players_pos[i][1],s=70,c=home_c,edgecolors='k',zorder=2)
+                plt.annotate(int(players_jersey[i]),(players_pos[i][0]+1,players_pos[i][1]-1),size='x-large',weight='bold')
             else:
-                plt.scatter(players_pos[i][0]*105,players_pos[i][1]*68,s=70,c=away_c,edgecolors='k',zorder=2)
+                plt.scatter(players_pos[i][0],players_pos[i][1],s=70,c=away_c,edgecolors='k',zorder=2)
     
     for bp in ball_pos:
         plt.scatter(bp[0],bp[1],color='k',s=10,zorder=2)
-        print(bp)
         
     plt.scatter(bp[0],bp[1],color='k',s=40,zorder=1)
      
@@ -297,7 +296,7 @@ def PlotSituation(players_pos,ball_pos,team_index,start_frame,
 
 
 def CreatePitch(i):
-    """Function that draws a pitch with dimensions 130x90"""
+    """Function that draws a pitch with dimensions 105x68"""
 
     #Create figure
     fig=plt.figure(i,figsize=(6.4*2,4.8*2))

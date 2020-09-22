@@ -43,6 +43,6 @@ color_home='green'
 color_away='yellow'
 
 from Libraries import Functions_PreprocessTrackingData as funcs
-funcs.PlotSituation(players_position_not_transf[frame][players_in_play],
+funcs.PlotSituation(players_position[frame][players_in_play],
                       ball_position[frame-10:frame],team_index[players_in_play],
                       frame,players_jersey[players_in_play],color_home,color_away)
