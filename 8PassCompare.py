@@ -129,7 +129,7 @@ fig.savefig('Output/ShotsPassesWithFit.pdf', dpi=None, bbox_inches="tight")
 
 
 #For goals (and strictly speaking even for shots) it is better to do a Poisson regression
-poisson_model = smf.glm(formula="Goals ~ Passes + Team", data=passshot_df, 
+poisson_model = smf.glm(formula="Goals ~ Passes + Team", data=passshot_df,
                     family=sm.families.Poisson()).fit()
 poisson_model.summary()
 b=poisson_model.params
