@@ -39,7 +39,7 @@ away_team='Arsenal'
 home_score_rate=poisson_model.predict(pd.DataFrame(data={'team': home_team, 'opponent': away_team,
                                        'home':1},index=[1]))
 away_score_rate=poisson_model.predict(pd.DataFrame(data={'team': away_team, 'opponent': home_team,
-                                       'home':1},index=[1]))
+                                       'home':0},index=[1]))
 print(home_team + ' against ' + away_team + ' expect to score: ' + str(home_score_rate))
 print(away_team + ' against ' + home_team + ' expect to score: ' + str(away_score_rate))
 
